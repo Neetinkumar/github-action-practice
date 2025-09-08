@@ -31,16 +31,16 @@ jobs:
     
     deploy_job_2:
         needs: test_job_2
-        runs-on: ubunru-latest
+        runs-on: ubuntu-latest
         steps:
-            
-        - name: Read file
-          run: cat dragon.txt
-          
+
         - name: download to artifactory
           uses:  actions/download-artifact@v5
           with:
             name: dragon-text-file  
+
+        - name: Read file
+          run: cat dragon.txt
 
         - name: deploy
           run: echo deploying ..........          
