@@ -1,4 +1,4 @@
-name: my first workflow
+name: my ascii workflow
 on: push
 
 jobs:
@@ -12,5 +12,7 @@ jobs:
           run: ls -latr  
 
         - name: Execute Shell script
-          run: ./ascii-script.sh
+          run: | 
+            chmod +x
+            ./ascii-script.sh
 
