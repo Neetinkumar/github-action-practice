@@ -2,6 +2,7 @@ name: multiple jobs
 on: push
 jobs:
     build_job_1:
+
         runs-on: ubuntu-latest
         steps:
         - name: Execute cowsay Program
@@ -14,6 +15,7 @@ jobs:
           run: sleep 30  
     
     test_job_2:
+        needs: build_job_1
         runs-on: ubuntu-latest
         steps:
         - name: sleep for 10 sec
@@ -23,6 +25,7 @@ jobs:
           run: grep -i "dragon" dragon.txt 
     
     deploy_job_2:
+        needs: test_job_2
         runs-on: ubunru-latest
         steps:
         - name: Read file
