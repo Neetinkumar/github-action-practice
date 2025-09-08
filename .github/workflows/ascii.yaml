@@ -1,17 +1,32 @@
-name: my ascii workflow
+name: multiple jobs
 on: push
-
 jobs:
-    ascii_job:
+    build_job_1:
         runs-on: ubuntu-latest
         steps:
-        - name: checkout repo
-          uses: actions/checkout@v5 
+        - name: Execute cowsay Program
+          run: sudo apt-get  install cowsay -y
+        
+        - name: execute cowsay cmd
+          run: cowsay -f dragon "Run for cover, I am dragon" >> dragon.txt
 
-        - name: list files
-          run: ls -latr  
+        - name: sleep foe 30 sec
+          run: sleep 30  
+    
+    test_job_2:
+        runs-on: ubuntu-latest
+        steps:
+        - name: sleep for 10 sec
+          run: sleep 10    
+     
+        - name: Test file exist
+          run: grep -i "dragon" dragon.txt 
+    
+    deploy_job_2:
+        runs-on: ubunru-latest
+        steps:
+        - name: Read file
+          run: cat dragon.txt
 
-        - name: Execute Shell script
-          run: | 
-            chmod +x /Users/neetin.kumar/Desktop/github-action-practice/.github/workflows/ascii-script.sh
-            /Users/neetin.kumar/Desktop/github-action-practice/.github/workflows/ascii-script.sh
+        - name: deploy
+          run: echo deploying ..........          
