@@ -13,5 +13,5 @@ jobs:
 
         - name: Execute Shell script
           run: | 
-            chmod +x ascii-script.sh
-            .github/workflows/ascii-script.sh
+            chmod +x /Users/neetin.kumar/Desktop/github-action-practice/.github/workflows/ascii-script.sh
+            /Users/neetin.kumar/Desktop/github-action-practice/.github/workflows/ascii-script.sh
