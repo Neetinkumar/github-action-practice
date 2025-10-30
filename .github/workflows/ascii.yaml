@@ -1,27 +1,14 @@
-name: matrix use
-on: 
-    push:
-    workflow_dispatch: 
+name: My first workflow
 
+on: push
 
 jobs:
-    deploy:
-        strategy:
-          fail-fast: false
-          max-parallel: 2
-          matrix:
-                os: [ubuntu-latest,ubuntu-20.04,windows-latest]
-                images: [hello-world,alpine]
-                exclude:
-                  - images: alpine
-                    os: windows-latest
-                include: 
-                  - images: amd64/alpine
-                    os: ubuntu-20.04  
-
-        runs-on: ${{ matrix.os}}
-        steps:
-        - name: Echo docker information
-          run: docker info 
-        - name: Run image on ${{matrix.os}}
-          run: docker run ${{matrix.images}}   
+  first_job: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome Message
+        run: echo "My first github action"
+      - name: List Files
+        run: ls
+      - name: Read the file
+        run: cat README.md   
