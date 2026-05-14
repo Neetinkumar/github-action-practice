@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout App Code') {
             steps {
-                git url: 'https://github.com/Neetinkumar/python', branch: 'master'
+                git url: 'https://github.com/Neetinkumar/python', branch: 'main'
             }
         }
         stage('Build') {
